@@ -1,11 +1,13 @@
+import { Payload } from './../../model/payload/payload';
+import { ReqBody } from './../../model/req-body/req-body';
 import { Body, Controller, Post } from '@nestjs/common';
 
 @Controller('api/elastic')
 export class ElasticController {
 
     @Post("/user")
-    searchUser(@Body('payload') reqBody: any): string{
-        console.log(reqBody.city);
+    searchUser(@Body() reqBody: ReqBody): Payload{
+        console.log(reqBody.payload.city);
 
 
 
@@ -15,7 +17,7 @@ export class ElasticController {
 
 
         
-        return reqBody;
+        return reqBody.payload;
     }
 
 }
